@@ -4,6 +4,11 @@ export class UrlParamBuilder {
   protected readonly paramSeparator: string = '&';
 
   constructor(url: string) {
+    // TypeScript does not have a nice support to constructor overloading,
+    // for this reason failIfStringHasWhitespaces check is not done here
+    // to avoid checking elements of the url that have been already validated.
+    // WARNING: creating new instances of UrlBuilder and UrlParamBuilder directly
+    // from the constructor will not throw any error if the url contains whitespaces!
     this.url = url.trim();
   }
 

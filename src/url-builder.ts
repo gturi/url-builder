@@ -8,14 +8,24 @@ export class UrlBuilder extends UrlParamBuilder {
     if (https) {
       protocol += 's';
     }
-    return new UrlBuilder(`${protocol}://${host.trim()}:${port}`);
+    const trimmedHost = host.trim();
+    UrlBuilder.failIfStringHasWhitespaces(trimmedHost);
+    return new UrlBuilder(`${protocol}://${trimmedHost}:${port}`);
   }
 
   addPath(path: string, trailingSeparator = false): UrlBuilder {
+    const trimmedPath = path.trim();
+    UrlBuilder.failIfStringHasWhitespaces(trimmedPath);
     const newUri = [
       this.url.replace(/[/]*$/g, ''),
-      path.trim().replace(/(^[/]*|[/]*$)/g, ''),
+      trimmedPath.replace(/(^[/]*|[/]*$)/g, ''),
     ].join('/');
     return new UrlBuilder(newUri + (trailingSeparator ? '/' : ''));
+  }
+
+  protected static failIfStringHasWhitespaces(s: string) {
+    if (/\s/.test(s)) {
+      throw new Error('path can not contain any whitespace character');
+    }
   }
 }
