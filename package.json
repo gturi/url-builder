@@ -4,12 +4,21 @@
   "description": "Utility to help building http urls",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test"
+  },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
+    "chai": "^4.2.0",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   }
 }
