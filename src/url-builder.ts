@@ -8,7 +8,7 @@ export class UrlBuilder extends UrlParamBuilder {
     if (https) {
       protocol += 's';
     }
-    return new UrlBuilder(`${protocol}://${host}:${port}`);
+    return new UrlBuilder(`${protocol}://${host.trim()}:${port}`);
   }
 
   addPath(path: string, trailingSeparator = false): UrlBuilder {
