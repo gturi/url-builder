@@ -60,4 +60,26 @@ describe('UrlBuilder', () => {
       expect(newUrl.build()).to.equal(`${exampleUrl}/${examplePath}`);
     });
   });
+
+  describe('#addQueryParam()', () => {
+    it('should insert \'?\' to separate the first param from the path', () => {
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(examplePath)
+        .addQueryParam('foo', 'bar')
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/${examplePath}?foo=bar`);
+    });
+
+    it('should insert \'&\' to separate query params from the second param onwards', () => {
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(examplePath)
+        .addQueryParam('foo', 'bar')
+        .addQueryParam('baz', 'qux')
+        .addQueryParam('quux', 'quuz')
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/${examplePath}?foo=bar&baz=qux&quux=quuz`);
+    });
+  });
 });
