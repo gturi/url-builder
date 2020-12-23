@@ -12,16 +12,14 @@ export class UrlParamBuilder {
     this.url = url.trim();
   }
 
-  addQueryParam(key: string, value: string | number | object): UrlParamBuilder {
+  addQueryParam(key: string, value: string | number | boolean | object): UrlParamBuilder {
     if (value === null || value === undefined) {
       return this;
     }
-    let v: string;
+    let v: string | number | boolean;
     switch (typeof value) {
       case 'number':
       case 'boolean':
-        v = `${value}`;
-        break;
       case 'string':
         v = value;
         break;
