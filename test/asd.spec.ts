@@ -29,6 +29,10 @@ describe('UrlBuilder', () => {
 
       expect(url).to.equal(exampleUrl);
     });
+
+    it('should not allow whitespaces inside path', () => {
+      expect(() => UrlBuilder.create(' local host ', 8080)).to.throw('path can not contain any whitespace character');
+    });
   });
 
   describe('#addPath()', () => {
@@ -72,6 +76,11 @@ describe('UrlBuilder', () => {
         .addPath('foo ')
         .build();
       expect(url).to.equal(`${exampleUrl}/${examplePath}/foo`);
+    });
+
+    it('should not allow whitespaces inside path', () => {
+      const urlBuilder = UrlBuilder.create('localhost', 8080);
+      expect(() => urlBuilder.addPath('te st')).to.throw('path can not contain any whitespace character');
     });
   });
 
