@@ -104,5 +104,39 @@ describe('UrlBuilder', () => {
 
       expect(url).to.equal(`${exampleUrl}/${examplePath}?foo=bar&baz=qux&quux=quuz`);
     });
+
+    it('should allow numeric query params', () => {
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(examplePath)
+        .addQueryParam('foo', 1)
+        .addQueryParam('bar', 2)
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/${examplePath}?foo=1&bar=2`);
+    });
+
+    it('should allow boolean query params', () => {
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(examplePath)
+        .addQueryParam('foo', true)
+        .addQueryParam('bar', false)
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/${examplePath}?foo=true&bar=false`);
+    });
+
+    it('should JSON.stringify query params which are not of type string, number, boolean', () => {
+      const obj = {
+        foo: 'bar',
+        baz: 0,
+        qux: true,
+      };
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(examplePath)
+        .addQueryParam('obj', obj)
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/${examplePath}?obj={"foo":"bar","baz":0,"qux":true}`);
+    });
   });
 });
