@@ -23,6 +23,12 @@ describe('UrlBuilder', () => {
 
       expect(url).to.equal(httpExampleUrl);
     });
+
+    it('should remove leading and trailing whitespaces', () => {
+      const url = UrlBuilder.create(' localhost ', 8080).build();
+
+      expect(url).to.equal(exampleUrl);
+    });
   });
 
   describe('#addPath()', () => {
@@ -58,6 +64,14 @@ describe('UrlBuilder', () => {
 
       expect(url.build()).to.equal(exampleUrl);
       expect(newUrl.build()).to.equal(`${exampleUrl}/${examplePath}`);
+    });
+
+    it('should remove leading and trailing whitespaces', () => {
+      const url = UrlBuilder.create('localhost', 8080)
+        .addPath(` ${examplePath} `)
+        .addPath('foo ')
+        .build();
+      expect(url).to.equal(`${exampleUrl}/${examplePath}/foo`);
     });
   });
 
