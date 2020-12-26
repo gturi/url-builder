@@ -1,8 +1,17 @@
+/**
+ * Utility to add query params to rest API urls.
+ */
 export class UrlParamBuilder {
   protected url: string;
 
   protected readonly paramSeparator: string = '&';
 
+  /**
+   * Default constructor. Outside of url trimming,
+   * no validation check is performed on the input string.
+   *
+   * @param url the url.
+   */
   constructor(url: string) {
     // TypeScript does not have a nice support to constructor overloading,
     // for this reason failIfStringHasWhitespaces check is not done here
@@ -12,6 +21,16 @@ export class UrlParamBuilder {
     this.url = url.trim();
   }
 
+  /**
+   * Adds a query param to the url.
+   *
+   * @param key the query param name.
+   * @param value the value of the query param. Values with type == object
+   *              will converted to JSON string.
+   * @returns a new [[UrlParamBuilder]] instance. Its url is obtained by appending to the base url
+   *          '?' or '&' followed by `key`=`value` string. '?' will be used the first time this
+   *          function gets called, '&' will be used the other times.
+   */
   addQueryParam(key: string, value: string | number | boolean | object): UrlParamBuilder {
     if (value === null || value === undefined) {
       return this;
@@ -29,6 +48,11 @@ export class UrlParamBuilder {
     return new UrlParamBuilder(`${this.url}${this.paramSeparator}${key}=${v}`);
   }
 
+  /**
+   * Builds the url.
+   *
+   * @returns the built url.
+   */
   build(): string {
     return this.url;
   }
