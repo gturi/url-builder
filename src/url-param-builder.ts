@@ -32,7 +32,7 @@ export class UrlParamBuilder {
    *          function gets called, '&' will be used the other times.
    */
   addQueryParam(key: string, value: string | number | boolean | object): UrlParamBuilder {
-    if (value === null || value === undefined) {
+    if (key === '' || value === null || value === undefined) {
       return this;
     }
     let v: string | number | boolean;
