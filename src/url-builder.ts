@@ -14,12 +14,15 @@ export class UrlBuilder extends UrlParamBuilder {
    * @param https true to use https, false to use http.
    * @returns the instance of UrlBuilder.
    */
-  static create(host: string, port: number, https = true) {
+  static create(host: string, port: number, https = true): UrlBuilder {
     let protocol = 'http';
     if (https) {
       protocol += 's';
     }
     const trimmedHost = host.trim();
+    if (trimmedHost === '') {
+      throw new Error('host can not be empty string');
+    }
     UrlBuilder.failIfStringHasWhitespaces(trimmedHost);
     return new UrlBuilder(`${protocol}://${trimmedHost}:${port}`);
   }
@@ -36,6 +39,9 @@ export class UrlBuilder extends UrlParamBuilder {
    */
   addPath(path: string, trailingSeparator = false): UrlBuilder {
     const trimmedPath = path.trim();
+    if (path === '') {
+      return this;
+    }
     UrlBuilder.failIfStringHasWhitespaces(trimmedPath);
     const newUrl = [
       // removes all the trailing '/'
