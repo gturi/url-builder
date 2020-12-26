@@ -52,7 +52,12 @@ export class UrlBuilder extends UrlParamBuilder {
     return new UrlBuilder(newUrl + (trailingSeparator ? '/' : ''));
   }
 
-  protected static failIfStringHasWhitespaces(s: string) {
+  /**
+   * Throws an exception if the input string contains whitespaces.
+   *
+   * @param s a string.
+   */
+  private static failIfStringHasWhitespaces(s: string) {
     if (/\s/.test(s)) {
       throw new Error('path can not contain any whitespace character');
     }
