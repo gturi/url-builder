@@ -11,6 +11,12 @@ describe('UrlBuilder', () => {
   const exampleUrl = `https://${host}:${port}`;
   const examplePath = 'test';
 
+  describe('#constructor()', () => {
+    it('should not allow empty strings', () => {
+      expect(() => new UrlBuilder('')).to.throw('url can not be empty string');
+    });
+  });
+
   describe('#create()', () => {
     it(`should return ${exampleUrl} input values are '${host}', '${port}'`, () => {
       const url = UrlBuilder.create(host, port).build();
