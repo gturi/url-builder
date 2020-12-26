@@ -3,6 +3,7 @@
 import { expect } from 'chai';
 import 'mocha';
 import { UrlBuilder } from '../src/index';
+import { UrlParamBuilder } from '../src/url-param-builder';
 
 describe('UrlParamBuilder', () => {
 
@@ -10,6 +11,12 @@ describe('UrlParamBuilder', () => {
   const port = 8080;
   const exampleUrl = `https://${host}:${port}`;
   const examplePath = 'test';
+
+  describe('#constructor()', () => {
+    it('should not allow empty strings', () => {
+      expect(() => new UrlParamBuilder('')).to.throw('url can not be empty string');
+    });
+  });
 
   describe('#addQueryParam()', () => {
     it('should insert \'?\' to separate the first param from the path', () => {
