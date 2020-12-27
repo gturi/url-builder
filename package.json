@@ -8,7 +8,8 @@
     "compile": "npx tsc",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test",
-    "doc": "npx typedoc --out docs/ src/"
+    "doc": "npx typedoc --out docs/ src/",
+    "travis-deploy": "node travis-deploy.mjs"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

@@ -1,3 +1,18 @@
 language: nude_js
 node_js:
- - node
+  - node
+
+before_deploy:
+  - npm run travis-deploy $TRAVIS_BRANCH
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  # Set in the settings page of the repository, as a secure variable
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: gh-pages
+  on:
+    branch:
+      - main
+      - develop
