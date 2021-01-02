@@ -1,15 +1,18 @@
 {
   "name": "http-url-builder",
+  "author": "Giacomo Venturini",
   "version": "1.0.0",
   "description": "Utility to help building http urls",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "compile": "npx tsc",
+    "build": "tsc",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test",
-    "doc": "npx typedoc --out docs/ src/",
-    "travis-deploy": "node travis-deploy.mjs"
+    "doc": "typedoc --out docs/ src/",
+    "travis-deploy": "node travis-deploy.mjs",
+    "prepublishOnly": "npm test",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
