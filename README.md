@@ -1,7 +1,7 @@
 # url-builder
 
 | branch | build | coverage |
-| --- | ---| --- |
+| --- | --- | --- |
 | main | [![Build Status](https://travis-ci.com/FlamingTuri/url-builder.svg?token=E3xjCEVnoxq524EqpdKt&branch=main)](https://travis-ci.com/FlamingTuri/url-builder) | [![Coverage Status](https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=main)](https://coveralls.io/github/FlamingTuri/url-builder?branch=main) |
 | develop | [![Build Status](https://travis-ci.com/FlamingTuri/url-builder.svg?token=E3xjCEVnoxq524EqpdKt&branch=develop)](https://travis-ci.com/FlamingTuri/url-builder) | [![Coverage Status](https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=develop)](https://coveralls.io/github/FlamingTuri/url-builder?branch=develop) |
 
@@ -34,7 +34,8 @@ const myUrl = UrlBuilder.create('localhost', 8080/*, false*/)
     .addQueryParam('test', 123)
     .build();
 
-console.log(myUrl); // output: https://localhost:8080/foo/bar?baz=qux&test=123
+console.log(myUrl);
+// https://localhost:8080/foo/bar?baz=qux&test=123
 ```
 
 `addQueryParam()` accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.
@@ -49,7 +50,8 @@ const url = UrlBuilder.create('localhost', 8080)
     .addQueryParam('myObj', obj)
     .build();
 
-console.log(url); // https://localhost:8080/example?myObj={"foo":"bar","baz":0,"qux":true}
+console.log(url);
+// https://localhost:8080/example?myObj={"foo":"bar","baz":0,"qux":true}
 ```
 
 Each `addPath()` and `addQueryParam()` operation creates a new UrlBuilder instance.
@@ -60,9 +62,9 @@ const base = UrlBuilder.create('localhost', 8080).addPath('base');
 const fooUrl = base.addPath('foo');
 const barUrl = base.addPath('bar');
 
-console.log(base.build());   // output: https://localhost:8080/base
-console.log(fooUrl.build()); // output: https://localhost:8080/base/foo
-console.log(barUrl.build()); // output: https://localhost:8080/base/bar
+console.log(base.build());   // https://localhost:8080/base
+console.log(fooUrl.build()); // https://localhost:8080/base/foo
+console.log(barUrl.build()); // https://localhost:8080/base/bar
 ```
 
 If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:
