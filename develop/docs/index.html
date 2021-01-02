@@ -83,6 +83,58 @@
 							<td><a href="https://travis-ci.com/FlamingTuri/url-builder"><img src="https://travis-ci.com/FlamingTuri/url-builder.svg?token=E3xjCEVnoxq524EqpdKt&branch=develop" alt="Build Status"></a></td>
 						</tr>
 				</tbody></table>
+				<p>Utility to help building http urls for your API.</p>
+				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
+					<h2>Installing</h2>
+				</a>
+				<pre><code>$ npm <span class="hljs-keyword">install</span> http-url-builder</code></pre>
+				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+					<h2>Examples</h2>
+				</a>
+				<p>Basic setup:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { UrlBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;http-url-builder&#x27;</span>;
+
+<span class="hljs-keyword">let</span> base = UrlBuilder.create(<span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-number">8080</span>).build();
+
+<span class="hljs-built_in">console</span>.log(base); <span class="hljs-comment">// output: https://localhost:8080</span></code></pre>
+				<p>Build an url:</p>
+				<pre><code class="language-js"><span class="hljs-comment">// &#x27;false&#x27; uses &#x27;http&#x27; instead of &#x27;https&#x27;</span>
+<span class="hljs-keyword">let</span> myUrl = UrlBuilder.create(<span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-number">8080</span><span class="hljs-comment">/*, false*/</span>)
+    .addPath(<span class="hljs-string">&#x27;foo&#x27;</span>)
+    .addPath(<span class="hljs-string">&#x27;bar&#x27;</span>)
+    .addQueryParam(<span class="hljs-string">&#x27;baz&#x27;</span>, <span class="hljs-string">&#x27;qux&#x27;</span>)
+    .addQueryParam(<span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-number">123</span>)
+    .build();
+
+<span class="hljs-built_in">console</span>.log(myUrl); <span class="hljs-comment">// output: https://localhost:8080/foo/bar?baz=qux&amp;test=123</span></code></pre>
+				<p><code>addQueryParam()</code> accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">foo</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
+    <span class="hljs-attr">baz</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">qux</span>: <span class="hljs-literal">true</span>,
+};
+<span class="hljs-keyword">const</span> url = UrlBuilder.create(<span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-number">8080</span>)
+    .addPath(<span class="hljs-string">&#x27;example&#x27;</span>)
+    .addQueryParam(<span class="hljs-string">&#x27;myObj&#x27;</span>, obj)
+    .build();
+
+<span class="hljs-built_in">console</span>.log(url); <span class="hljs-comment">// https://localhost:8080/example?myObj={&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:0,&quot;qux&quot;:true}</span></code></pre>
+				<p>Each <code>addPath()</code> and <code>addQueryParam()</code> operation creates a new UrlBuilder instance.
+				Thanks to immutability, paths can not be accidentally modified:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> base = UrlBuilder.create(<span class="hljs-string">&#x27;localhost&#x27;</span>, <span class="hljs-number">8080</span>).addPath(<span class="hljs-string">&#x27;base&#x27;</span>);
+
+<span class="hljs-keyword">let</span> fooUrl = base.addPath(<span class="hljs-string">&#x27;foo&#x27;</span>);
+<span class="hljs-keyword">let</span> barUrl = base.addPath(<span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-built_in">console</span>.log(base.build());   <span class="hljs-comment">// output: https://localhost:8080/base</span>
+<span class="hljs-built_in">console</span>.log(fooUrl.build()); <span class="hljs-comment">// output: https://localhost:8080/base/foo</span>
+<span class="hljs-built_in">console</span>.log(barUrl.build()); <span class="hljs-comment">// output: https://localhost:8080/base/bar</span></code></pre>
+				<p>If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">let</span> myUrl = <span class="hljs-keyword">new</span> UrlBuilder(<span class="hljs-string">&quot;https://localhost:8080/my/path&quot;</span>);</code></pre>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h1>License</h1>
+				</a>
+				<p><a href="LICENSE">MIT</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
