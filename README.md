@@ -1,4 +1,4 @@
-# url-builder
+# UrlBuilder
 
 | branch | build | coverage |
 | --- | --- | --- |
