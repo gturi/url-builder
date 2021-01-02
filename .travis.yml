@@ -4,6 +4,7 @@ node_js:
 
 before_deploy:
   - npm run travis-deploy $TRAVIS_BRANCH
+  - cat "gh-pages/$TRAVIS_BRANCH/coverage/lcov.info" | ./node_modules/coveralls/bin/coveralls.js
 
 # For security reasons, deployment variables are set in the settings page of the repository
 deploy:
