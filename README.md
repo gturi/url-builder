@@ -19,7 +19,7 @@ Basic setup:
 ```js
 import { UrlBuilder } from 'http-url-builder';
 
-let base = UrlBuilder.create('localhost', 8080).build();
+const base = UrlBuilder.create('localhost', 8080).build();
 
 console.log(base); // output: https://localhost:8080
 ```
@@ -27,7 +27,7 @@ console.log(base); // output: https://localhost:8080
 Build an url:
 ```js
 // 'false' uses 'http' instead of 'https'
-let myUrl = UrlBuilder.create('localhost', 8080/*, false*/)
+const myUrl = UrlBuilder.create('localhost', 8080/*, false*/)
     .addPath('foo')
     .addPath('bar')
     .addQueryParam('baz', 'qux')
@@ -55,10 +55,10 @@ console.log(url); // https://localhost:8080/example?myObj={"foo":"bar","baz":0,"
 Each `addPath()` and `addQueryParam()` operation creates a new UrlBuilder instance.
 Thanks to immutability, paths can not be accidentally modified:
 ```js
-let base = UrlBuilder.create('localhost', 8080).addPath('base');
+const base = UrlBuilder.create('localhost', 8080).addPath('base');
 
-let fooUrl = base.addPath('foo');
-let barUrl = base.addPath('bar');
+const fooUrl = base.addPath('foo');
+const barUrl = base.addPath('bar');
 
 console.log(base.build());   // output: https://localhost:8080/base
 console.log(fooUrl.build()); // output: https://localhost:8080/base/foo
@@ -67,7 +67,7 @@ console.log(barUrl.build()); // output: https://localhost:8080/base/bar
 
 If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:
 ```js
-let myUrl = new UrlBuilder("https://localhost:8080/my/path");
+const myUrl = new UrlBuilder("https://localhost:8080/my/path");
 ```
 
 # License
