@@ -60,17 +60,21 @@ describe('UrlParamBuilder', () => {
     });
 
     it('should JSON.stringify query params which are not of type string, number, boolean', () => {
+      const baseUrl = UrlBuilder.create(host, port).addPath(examplePath);
+
       const obj = {
         foo: 'bar',
         baz: 0,
         qux: true,
       };
-      const url = UrlBuilder.create(host, port)
-        .addPath(examplePath)
-        .addQueryParam('obj', obj)
-        .build();
+      const objUrl = baseUrl.addQueryParam('obj', obj).build();
 
-      expect(url).to.equal(`${exampleUrl}/${examplePath}?obj={"foo":"bar","baz":0,"qux":true}`);
+      expect(objUrl).to.equal(`${exampleUrl}/${examplePath}?obj={"foo":"bar","baz":0,"qux":true}`);
+
+      const array = ['foo', 'bar', 'baz'];
+      const arrayUrl = baseUrl.addQueryParam('array', array).build();
+
+      expect(arrayUrl).to.equal(`${exampleUrl}/${examplePath}?array=["foo","bar","baz"]`);
     });
 
     it('should return the same UrlParamBuilder reference if the key is empty string', () => {
