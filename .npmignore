@@ -1,2 +1,7 @@
 tsconfig.json
+.gitignore
+.nyc_output
+docs
+gh-pages
+test
 src
