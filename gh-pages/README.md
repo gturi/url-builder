@@ -1,4 +1,6 @@
-# url builder
+# UrlBuilder
+
+Utility to help building http urls for your API.
 
 ## main
 
