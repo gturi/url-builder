@@ -32,7 +32,7 @@ export class UrlParamBuilder {
    * @param key the query param name.
    * @param value the value of the query param. Values with type == object
    *              will converted to JSON string.
-   * @returns a new {{@link UrlParamBuilder}} instance.
+   * @returns a new {@link UrlParamBuilder} instance.
    */
   addQueryParam(key: string, value: string | number | boolean | object): UrlParamBuilder {
     if (key === '' || value === null || value === undefined) {
