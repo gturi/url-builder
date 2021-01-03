@@ -132,7 +132,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>.<a href="_url_param_builder_.urlparambuilder.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-param-builder.ts#L7">url-param-builder.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-param-builder.ts#L7">url-param-builder.ts:7</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -166,7 +166,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>.<a href="_url_param_builder_.urlparambuilder.html#paramseparator">paramSeparator</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-builder.ts#L7">url-builder.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-builder.ts#L7">url-builder.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +177,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>.<a href="_url_param_builder_.urlparambuilder.html#url">url</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-param-builder.ts#L5">url-param-builder.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-param-builder.ts#L5">url-param-builder.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -194,12 +194,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-builder.ts#L40">url-builder.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-builder.ts#L37">url-builder.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Appends a path to the current url.</p>
+									<p>Adds a path to the current url. The resulting url is obtained by appending
+									to the base one &#39;/&#39; separator followed by the specified <code>path</code>.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -213,15 +214,14 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> trailingSeparator: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>if set to {true} adds a trailing &#39;/&#39; at the end of the url.
+										<p>if set to <code>true</code> adds a trailing &#39;/&#39; after the specified <code>path</code>.
 											This property should be used only for compatibility reasons,
-										since trailing &#39;/&#39; should be avoided when building rest API.</p>
+										since trailing &#39;/&#39; should be avoided when building rest APIs.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_url_builder_.urlbuilder.html" class="tsd-signature-type">UrlBuilder</a></h4>
-							<p>a new UrlBuilder instance. Its url is obtained by combining the base url
-							with the specified <code>path</code>.</p>
+							<p>a new <a href="_url_builder_.urlbuilder.html">UrlBuilder</a> instance.</p>
 						</li>
 					</ul>
 				</section>
@@ -236,12 +236,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>.<a href="_url_param_builder_.urlparambuilder.html#addqueryparam">addQueryParam</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-param-builder.ts#L37">url-param-builder.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-param-builder.ts#L37">url-param-builder.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds a query param to the url.</p>
+									<p>Adds a query param to the url. The resulting url is obtained by appending to the base one
+										&#39;?&#39; or &#39;&amp;&#39; followed by <code>key</code>=<code>value</code> string. &#39;?&#39; separator will be used the first time this
+									function gets called successfully, &#39;&amp;&#39; separator will be used the other times.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -261,9 +263,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_url_param_builder_.urlparambuilder.html" class="tsd-signature-type">UrlParamBuilder</a></h4>
-							<p>a new <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a> instance. Its url is obtained by appending to the base url
-								&#39;?&#39; or &#39;&amp;&#39; followed by <code>key</code>=<code>value</code> string. &#39;?&#39; will be used the first time this
-							function gets called, &#39;&amp;&#39; will be used the other times.</p>
+							<p>a new {<a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>} instance.</p>
 						</li>
 					</ul>
 				</section>
@@ -278,7 +278,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_url_param_builder_.urlparambuilder.html">UrlParamBuilder</a>.<a href="_url_param_builder_.urlparambuilder.html#build">build</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-param-builder.ts#L59">url-param-builder.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-param-builder.ts#L59">url-param-builder.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -301,12 +301,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-builder.ts#L17">url-builder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-builder.ts#L17">url-builder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new a new instance of UrlBuilder.</p>
+									<p>Creates a new <a href="_url_builder_.urlbuilder.html">UrlBuilder</a> instance.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -326,12 +326,12 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> https: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>true to use https, false to use http.</p>
+										<p><code>true</code> to use https, <code>false</code> to use http.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_url_builder_.urlbuilder.html" class="tsd-signature-type">UrlBuilder</a></h4>
-							<p>the instance of UrlBuilder.</p>
+							<p>the new <a href="_url_builder_.urlbuilder.html">UrlBuilder</a> instance.</p>
 						</li>
 					</ul>
 				</section>
@@ -345,7 +345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/c777cce/src/url-builder.ts#L60">url-builder.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/7b6be5c/src/url-builder.ts#L57">url-builder.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
