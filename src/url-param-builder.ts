@@ -25,14 +25,14 @@ export class UrlParamBuilder {
   }
 
   /**
-   * Adds a query param to the url.
+   * Adds a query param to the url. The resulting url is obtained by appending to the base one
+   * '?' or '&' followed by `key`=`value` string. '?' separator will be used the first time this
+   * function gets called successfully, '&' separator will be used the other times.
    *
    * @param key the query param name.
    * @param value the value of the query param. Values with type == object
    *              will converted to JSON string.
-   * @returns a new [[UrlParamBuilder]] instance. Its url is obtained by appending to the base url
-   *          '?' or '&' followed by `key`=`value` string. '?' will be used the first time this
-   *          function gets called, '&' will be used the other times.
+   * @returns a new {{@link UrlParamBuilder}} instance.
    */
   addQueryParam(key: string, value: string | number | boolean | object): UrlParamBuilder {
     if (key === '' || value === null || value === undefined) {
