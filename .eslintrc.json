@@ -27,6 +27,13 @@
                 "ts": "never",
                 "tsx": "never"
             }
+        ],
+        "indent": [
+            "error",
+            2,
+            {
+                "SwitchCase": 1
+            }
         ]
     },
     "settings": {
