@@ -3,7 +3,10 @@
   "author": "Giacomo Venturini",
   "version": "1.0.0",
   "description": "Utility to help building http urls",
-  "keywords": ["url", "rest-api"],
+  "keywords": [
+    "url",
+    "rest-api"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,6 +14,7 @@
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test",
     "doc": "typedoc --out docs/ src/",
+    "lint": "eslint \"src/**\"",
     "travis-deploy": "node travis-deploy.mjs",
     "coveralls": "cat \"gh-pages/$1/coverage/lcov.info\"",
     "prepublishOnly": "npm test",
