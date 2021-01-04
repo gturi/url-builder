@@ -19,22 +19,23 @@ Basic setup:
 ```js
 import { UrlBuilder } from 'http-url-builder';
 
-const base = UrlBuilder.create('localhost', 8080).build();
+const url = UrlBuilder.create('localhost', 8080).build();
 
-console.log(base); // output: https://localhost:8080
+console.log(url);
+// https://localhost:8080
 ```
 
 Build an url:
 ```js
 // 'false' uses 'http' instead of 'https'
-const myUrl = UrlBuilder.create('localhost', 8080/*, false*/)
+const url = UrlBuilder.create('localhost', 8080/*, false*/)
     .addPath('foo')
     .addPath('bar')
     .addQueryParam('baz', 'qux')
     .addQueryParam('test', 123)
     .build();
 
-console.log(myUrl);
+console.log(url);
 // https://localhost:8080/foo/bar?baz=qux&test=123
 ```
 
@@ -69,7 +70,7 @@ console.log(barUrl.build()); // https://localhost:8080/base/bar
 
 If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:
 ```js
-const myUrl = new UrlBuilder("https://localhost:8080/my/path");
+const url = new UrlBuilder("https://localhost:8080/my/path");
 ```
 
 # License
