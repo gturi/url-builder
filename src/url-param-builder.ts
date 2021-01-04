@@ -2,7 +2,7 @@
  * Utility to add query params to rest API urls.
  */
 export class UrlParamBuilder {
-  protected url: string;
+  protected readonly url: string;
 
   protected readonly paramSeparator: string = '&';
 
