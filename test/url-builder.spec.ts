@@ -71,6 +71,16 @@ describe('UrlBuilder', () => {
       });
     });
 
+    paths.forEach((path) => {
+      it(`should return {basePath}/${examplePath} when its value is '${path}' and {basePath} ends with '/'`, () => {
+        const url = new UrlBuilder(`${exampleUrl}/`)
+          .addPath(path)
+          .build();
+
+        expect(url).to.equal(`${exampleUrl}/${examplePath}`);
+      });
+    });
+
     it('should not modify the original path', () => {
       const url = UrlBuilder.create(host, port);
 
