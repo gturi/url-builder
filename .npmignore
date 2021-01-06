@@ -1,0 +1,9 @@
+travis-deploy.mjs
+tsconfig.json
+.gitignore
+.nyc_output
+coverage
+docs
+gh-pages
+test
+src
