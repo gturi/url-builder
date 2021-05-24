@@ -1,0 +1,22 @@
+name: automerge-dependabot
+
+on:
+  pull_request_target:
+    branches: [ develop ]
+
+jobs:
+  automerge-dependabot:
+    name: Merge dependabot
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: run-test
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+        - run: npm install
+        - run: npm test
+      - name: merge-dependabot
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.MERGE_DEPENDABOT_GITHUB_TOKEN }}
