@@ -14,7 +14,8 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm test
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
-      - with:
-        target: minor
-        github-token: ${{ secrets.MERGE_DEPENDABOT_GITHUB_TOKEN }}
+      - name: automerge
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.MERGE_DEPENDABOT_GITHUB_TOKEN }}
