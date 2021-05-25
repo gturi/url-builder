@@ -34,3 +34,10 @@ jobs:
       with:
         branch: gh-pages
         folder: gh-pages
+  gh-release:
+    needs: setup-deploy
+    runs-on: ubuntu-latest
+    uses: softprops/action-gh-release@v1
+    if: startsWith(github.ref, 'refs/tags/')
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
