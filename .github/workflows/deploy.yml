@@ -2,7 +2,7 @@ name: deploy
 on:
   workflow_run:
     workflows: ["lint-and-test"]
-    branches: [main, develop]
+    branches: [develop]
     types:
       - completed
 
