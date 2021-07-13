@@ -1,6 +1,8 @@
 name: automerge-dependabot
 
 on:
+  push:
+    branches: [ develop ]
   pull_request_target:
     branches: [ develop ]
   check_suite:
@@ -17,3 +19,7 @@ jobs:
         uses: "pascalgn/automerge-action@v0.14.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""
+          MERGE_COMMIT_MESSAGE: pull-request-title
+          MERGE_DELETE_BRANCH: true
+          MERGE_METHOD: "rebase"
