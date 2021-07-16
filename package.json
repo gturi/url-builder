@@ -12,12 +12,10 @@
   "scripts": {
     "build": "tsc",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test",
-    "doc": "typedoc --out docs/ src/",
+    "coverage": "node script/generate-coverage.mjs",
+    "doc": "node script/generate-typedoc.mjs",
     "lint": "eslint \"src/**\"",
     "fix-lint": "npm run lint -- --fix",
-    "travis-deploy": "node travis-deploy.mjs",
-    "coveralls": "cat \"gh-pages/$1/coverage/lcov.info\"",
     "prepublishOnly": "npm test",
     "prepare": "npm run build"
   },
