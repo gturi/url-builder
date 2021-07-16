@@ -7,4 +7,6 @@ const deployDir = `gh-pages/${arg}`;
 const options = { stdio: [0, 1, 2] };
 
 // generate typedoc
-execSync(`npx typedoc --out ${deployDir}/docs/ src/`, options);
+const typedocDir = `${deployDir}/docs/`;
+execSync(`npx typedoc --out ${typedocDir} src/`, options);
+console.log(`Coverage generated at ${process.cwd()}/${typedocDir}`);
