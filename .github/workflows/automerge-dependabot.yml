@@ -1,9 +1,7 @@
 name: automerge-dependabot
 
 on:
-  push:
-    branches: [ develop ]
-  pull_request_target:
+  pull_request:
     branches: [ develop ]
   check_suite:
     types:
