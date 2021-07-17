@@ -12,12 +12,10 @@
   "scripts": {
     "build": "tsc",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" npm run test",
-    "doc": "typedoc --out docs/ src/",
+    "coverage": "node script/generate-coverage.mjs",
+    "doc": "node script/generate-typedoc.mjs",
     "lint": "eslint \"src/**\"",
     "fix-lint": "npm run lint -- --fix",
-    "travis-deploy": "node travis-deploy.mjs",
-    "coveralls": "cat \"gh-pages/$1/coverage/lcov.info\"",
     "prepublishOnly": "npm test",
     "prepare": "npm run build"
   },
@@ -39,10 +37,10 @@
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "mocha": "^8.2.1",
+    "mocha": "^9.0.2",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^15.1.0",
-    "ts-node": "^9.0.0",
+    "ts-node": "^10.1.0",
     "typedoc": "^0.19.2",
     "typescript": "^4.0.5"
   },
