@@ -1,8 +1,7 @@
 name: npm-release-dev
 on:
-  push:
-    branches:
-      - develop
+  schedule:
+    - cron:  '00 10 * * *'
 
 jobs:
   check-for-changes:
@@ -10,17 +9,19 @@ jobs:
     outputs:
       output: ${{ steps.status.outputs.value }}
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - run: npm ci
-    - id: status
-      # using a run statement for each command does not work
-      run: |
-        OUT=`node script/check-for-changes-within-24h.mjs`
-        echo "$OUT build step"
-        echo "::set-output name=value::$OUT"
+      - uses: actions/checkout@v2
+        with:
+          ref: develop
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - id: status
+        # using a run statement for each command does not work
+        run: |
+          OUT=`node script/check-for-changes-within-24h.mjs`
+          echo "$OUT build step"
+          echo "::set-output name=value::$OUT"
 
   build:
     needs: check-for-changes
@@ -28,6 +29,8 @@ jobs:
     if: ${{ needs.check-for-changes.outputs.output == 'run' }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: develop
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
@@ -51,6 +54,8 @@ jobs:
       packages: write 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: develop
       # setup to publish to npm registry
       - uses: actions/setup-node@v2
         with:
@@ -71,6 +76,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: develop
       # setup to publish to github registry
       - uses: actions/setup-node@v2
         with:
