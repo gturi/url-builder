@@ -15,6 +15,12 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      # gets the current version from package.json
+      - run: VERSION=`node -p "require('./package.json').version"`
+      # gets current timestamp with format yyyy.MM.dd-hh.mm.ss
+      - run: TIMESTAMP=`date +"%Y.%m.%d-%H.%M.%S"`
+      # sets the dev release version in the environment variables
+      - run: echo "DEV_VERSION=$VERSION-dev-$TIMESTAMP" >> $GITHUB_ENV
 
   npm-registry-release:
     needs: build
@@ -24,30 +30,34 @@ jobs:
       packages: write 
     steps:
       - uses: actions/checkout@v2
-      # Setup to publish to npm registry
+      # setup to publish to npm registry
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
+      # temporary modifies package.json version (the timestamp is used to get a uuid)
+      - run: npm version ${{ env.DEV_VERSION }} --no-git-tag-version
       - run: npm publish --access public --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   github-packages-release:
-    needs: build
+    needs: npm-registry-release
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
     steps:
       - uses: actions/checkout@v2
-      # Setup to publish to github registry
+      # setup to publish to github registry
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          registry-url: https://npm.pkg.github.com/
+          registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
+      # temporary modifies package.json version (the timestamp is used to get a uuid)
+      - run: npm version ${{ env.DEV_VERSION }} --no-git-tag-version
       - run: npm publish --access public --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
