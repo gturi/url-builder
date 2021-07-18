@@ -5,8 +5,26 @@ on:
       - develop
 
 jobs:
-  build:
+  check-for-changes:
     runs-on: ubuntu-latest
+    outputs:
+      output: ${{ steps.status.outputs.value }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - run: npm ci
+    - id: status
+      run: |
+        OUT=`node script/check-for-changes-within-24h.mjs`
+        echo "$OUT build step"
+        echo "::set-output name=value::$OUT"
+
+  build:
+    needs: check-for-changes
+    runs-on: ubuntu-latest
+    if: ${{ needs.check-for-changes.outputs.output == 'run' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
