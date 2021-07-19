@@ -31,7 +31,7 @@ jobs:
   automerge-npm-audit-fix:
     needs: log-github-actor
     name: Merge npm audit fix
-    if: github.actor == 'github-actions[bot]'
+    if: github.actor == 'FlamingTuri'
     runs-on: ubuntu-latest
     steps:
       - name: automerge npm audit fix

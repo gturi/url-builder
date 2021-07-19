@@ -24,11 +24,11 @@ jobs:
         if: ${{ env.CHANGES == 'true' }}
         with:
           title: 'npm audit fix'
-          author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
           commit-message: 'npm audit fix'
           branch: 'npm/audit-fix'
           base: 'feature/npm-audit-fix-action'
           delete-branch: true
           labels: 'dependencies,javascript'
           # repo scoped token is necessary to make the pull request trigger other actions
+          # unfortunately this changes the pull request author to the repo owner
           token: ${{ secrets.URL_BUILDER_GITHUB_TOKEN }}
