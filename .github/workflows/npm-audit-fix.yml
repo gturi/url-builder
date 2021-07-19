@@ -29,3 +29,5 @@ jobs:
           base: 'feature/npm-audit-fix-action'
           delete-branch: true
           labels: 'dependencies,javascript'
+          # repo scoped token is necessary to make the pull request trigger other actions
+          token: ${{ secrets.URL_BUILDER_GITHUB_TOKEN }}
