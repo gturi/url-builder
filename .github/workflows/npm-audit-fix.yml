@@ -25,6 +25,7 @@ jobs:
         with:
           title: 'npm audit fix'
           commit-message: 'npm audit fix'
-          branch: 'feature/npm-audit-fix-action'
+          branch: 'npm/audit-fix'
+          base: 'feature/npm-audit-fix-action'
           delete-branch: true
           labels: 'dependencies,javascript'
