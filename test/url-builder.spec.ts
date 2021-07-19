@@ -115,4 +115,64 @@ describe('UrlBuilder', () => {
       expect(urlBuilder.build()).to.equal(exampleUrl);
     });
   });
+
+  describe('#addPathVariable()', () => {
+    it('should allow whitespaces', () => {
+      const basePathVariable = 'John Doe';
+      const pathVariableCombinations = [basePathVariable, ` ${basePathVariable}`, `${basePathVariable} `];
+
+      pathVariableCombinations.forEach((pathVariable) => {
+        const url = UrlBuilder.create(host, port)
+          .addPathVariable(pathVariable)
+          .build();
+
+        expect(url).to.equal(`${exampleUrl}/${pathVariable}`);
+      });
+    });
+
+    it("should replace '/' with '%2F'", () => {
+      const pathVariable = '/John/Doe/';
+      const url = UrlBuilder.create(host, port)
+        .addPathVariable(pathVariable)
+        .build();
+
+      expect(url).to.equal(`${exampleUrl}/%2FJohn%2FDoe%2F`);
+    });
+
+    it('should remove leading and trailing whitespaces when trim flag is set to true', () => {
+      const basePathVariable = 'John Doe';
+      const pathVariableCombinations = [basePathVariable, ` ${basePathVariable}`, `${basePathVariable} `];
+
+      pathVariableCombinations.forEach((pathVariable) => {
+        const url = UrlBuilder.create(host, port)
+          .addPathVariable(pathVariable, true)
+          .build();
+
+        expect(url).to.equal(`${exampleUrl}/${basePathVariable}`);
+      });
+    });
+
+    it("should return a path with trailing '/' when trailingSeparator is set to 'true'", () => {
+      const basePathVariable = 'John Doe';
+      const pathVariableCombinations = [basePathVariable, ` ${basePathVariable}`, `${basePathVariable} `];
+
+      pathVariableCombinations.forEach((pathVariable) => {
+        const url = UrlBuilder.create(host, port)
+          .addPathVariable(pathVariable, false, true)
+          .build();
+
+        expect(url).to.equal(`${exampleUrl}/${pathVariable}/`);
+      });
+    });
+
+    it('should return the same UrlBuilder reference if pathVariable is equal to empty string', () => {
+      const urlBuilder = UrlBuilder.create(host, port);
+
+      const urlBuilder2 = urlBuilder.addPathVariable('');
+      expect(urlBuilder === urlBuilder2).to.equal(true);
+      expect(urlBuilder).to.equal(urlBuilder2);
+
+      expect(urlBuilder.build()).to.equal(exampleUrl);
+    });
+  });
 });
