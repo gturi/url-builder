@@ -24,6 +24,7 @@ jobs:
         if: ${{ env.CHANGES == 'true' }}
         with:
           title: 'npm audit fix'
+          author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
           commit-message: 'npm audit fix'
           branch: 'npm/audit-fix'
           base: 'feature/npm-audit-fix-action'
