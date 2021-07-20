@@ -37,14 +37,10 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      # gets the current version from package.json
-      - run: VERSION=`node -p "require('./package.json').version"`
-      # gets current timestamp with format yyyy.MM.dd-hh.mm.ss
-      - run: TIMESTAMP=`date +"%Y.%m.%d-%H.%M.%S"`
-      - run: DEV_VERSION=$VERSION-dev-$TIMESTAMP
-      - run: echo "new package release version $DEV_VERSION"
-      # sets the dev release version in the environment variables
-      - run: echo "DEV_VERSION=$DEV_VERSION" >> $GITHUB_ENV
+      - run: |
+          DEV_VERSION=`node script/create-develop-version.mjs`
+          echo "library dev version $DEV_VERSION"
+          echo "DEV_VERSION=$DEV_VERSION" >> $GITHUB_ENV
 
   npm-registry-release:
     needs: build

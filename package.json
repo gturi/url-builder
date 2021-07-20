@@ -1,7 +1,7 @@
 {
   "name": "http-url-builder",
   "author": "Giacomo Venturini",
-  "version": "1.0.0-dev-2021.7.18-14.50.31",
+  "version": "1.0.0",
   "description": "Utility to help building http urls",
   "keywords": [
     "url",
