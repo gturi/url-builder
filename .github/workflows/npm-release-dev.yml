@@ -22,10 +22,11 @@ jobs:
           OUT=`node script/check-for-changes-within-24h.mjs`
           echo "$OUT build step"
           echo "::set-output name=value::$OUT"
-
   build:
     needs: check-for-changes
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.value }}
     if: ${{ needs.check-for-changes.outputs.output == 'run' }}
     steps:
       - uses: actions/checkout@v2
@@ -37,17 +38,17 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - run: |
+      - id: version
+        run: |
           DEV_VERSION=`node script/create-develop-version.mjs`
           echo "library dev version $DEV_VERSION"
-          echo "DEV_VERSION=$DEV_VERSION" >> $GITHUB_ENV
-
+          echo "::set-output name=value::$DEV_VERSION"
   npm-registry-release:
     needs: build
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:
       contents: read
-      packages: write 
+      packages: write
     steps:
       - uses: actions/checkout@v2
         with:
@@ -59,17 +60,16 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       # temporary modifies package.json version (the timestamp is used to get a uuid)
-      - run: npm version ${{ env.DEV_VERSION }} --no-git-tag-version
+      - run: npm version ${{ needs.build.outputs.version }} --no-git-tag-version
       - run: npm publish --access public --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
   github-packages-release:
     needs: npm-registry-release
     runs-on: ubuntu-latest
     permissions:
-      packages: write
       contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v2
         with:
@@ -81,7 +81,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - run: npm ci
       # temporary modifies package.json version (the timestamp is used to get a uuid)
-      - run: npm version ${{ env.DEV_VERSION }} --no-git-tag-version
+      - run: npm version ${{ needs.build.outputs.version }} --no-git-tag-version
       - run: npm publish --access public --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
