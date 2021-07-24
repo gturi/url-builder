@@ -65,7 +65,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   github-packages-release:
-    needs: npm-registry-release
+    needs: [build, npm-registry-release]
     runs-on: ubuntu-latest
     permissions:
       contents: read
