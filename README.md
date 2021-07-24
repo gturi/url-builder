@@ -9,8 +9,40 @@ Utility to help building http urls for your API.
 
 ## Installing
 
+Using npm:
+
+```bash
+npm install http-url-builder
 ```
-$ npm install http-url-builder
+
+Using bower:
+
+```bash
+bower install http-url-builder
+```
+
+Using yarn:
+
+```bash
+yarn add http-url-builder
+```
+
+To install the latest version with security updates applied use `@dev` tag when installing:
+
+```bash
+npm install http-url-builder@dev
+```
+
+Using bower:
+
+```bash
+bower install http-url-builder@dev
+```
+
+Using yarn:
+
+```bash
+yarn add http-url-builder@dev
 ```
 
 ## Examples
