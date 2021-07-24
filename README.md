@@ -30,13 +30,30 @@ Build an url:
 // 'false' uses 'http' instead of 'https'
 const url = UrlBuilder.create('localhost', 8080/*, false*/)
     .addPath('foo')
+    .addPathVariable('John Doe')
     .addPath('bar')
     .addQueryParam('baz', 'qux')
     .addQueryParam('test', 123)
     .build();
 
 console.log(url);
-// https://localhost:8080/foo/bar?baz=qux&test=123
+// https://localhost:8080/foo/John Doe/bar?baz=qux&test=123
+```
+
+`addPath()` does not allow spaces in the url and automatically trims the path value to prevent errors.
+
+`addPathVariable()` instead allows to insert spaces since query params do not need to follow the strict rules applied to paths. Moreover, `/` characters will be replaced with `%2F`.
+
+```js
+const url = UrlBuilder.create('localhost', 8080)
+    .addPath('example')
+    // 'true' will trim the path variable as it happens with .addPath()
+    .addPathVariable(' John/Doe '/*, true*/)
+    .addPath('operation')
+    .build();
+
+console.log(url);
+// https://localhost:8080/example/ John%2FDoe /operation
 ```
 
 `addQueryParam()` accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.
@@ -55,7 +72,7 @@ console.log(url);
 // https://localhost:8080/example?myObj={"foo":"bar","baz":0,"qux":true}
 ```
 
-Each `addPath()` and `addQueryParam()` operation creates a new UrlBuilder instance.
+Each `addPath()`, `addPathVariable()` and `addQueryParam()` operation creates a new UrlBuilder instance.
 Thanks to immutability, paths can not be accidentally modified:
 ```js
 const base = UrlBuilder.create('localhost', 8080).addPath('base');
