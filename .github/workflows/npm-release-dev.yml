@@ -65,7 +65,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   github-packages-release:
-    needs: [build, npm-registry-release]
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -78,7 +78,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://npm.pkg.github.com/@FlamingTuri'
       - run: npm ci
       # temporary modifies package.json version (the timestamp is used to get a uuid)
       - run: npm version ${{ needs.build.outputs.version }} --no-git-tag-version
