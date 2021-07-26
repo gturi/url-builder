@@ -48,6 +48,7 @@ yarn add http-url-builder@dev
 ## Examples
 
 Basic setup:
+
 ```js
 import { UrlBuilder } from 'http-url-builder';
 
@@ -58,6 +59,7 @@ console.log(url);
 ```
 
 Build an url:
+
 ```js
 // 'false' uses 'http' instead of 'https'
 const url = UrlBuilder.create('localhost', 8080/*, false*/)
@@ -89,6 +91,7 @@ console.log(url);
 ```
 
 `addQueryParam()` accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.
+
 ```js
 const obj = {
     foo: 'bar',
@@ -106,6 +109,7 @@ console.log(url);
 
 Each `addPath()`, `addPathVariable()` and `addQueryParam()` operation creates a new UrlBuilder instance.
 Thanks to immutability, paths can not be accidentally modified:
+
 ```js
 const base = UrlBuilder.create('localhost', 8080).addPath('base');
 
@@ -118,6 +122,7 @@ console.log(barUrl.build()); // https://localhost:8080/base/bar
 ```
 
 If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:
+
 ```js
 const url = new UrlBuilder("https://localhost:8080/my/path");
 ```
