@@ -64,24 +64,3 @@ jobs:
       - run: npm publish --access public --tag dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  github-packages-release:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: develop
-      # setup to publish to github registry
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          registry-url: 'https://npm.pkg.github.com/@FlamingTuri'
-      - run: npm ci
-      # temporary modifies package.json version (the timestamp is used to get a uuid)
-      - run: npm version ${{ needs.build.outputs.version }} --no-git-tag-version
-      - run: npm publish --access public --tag dev
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
