@@ -7,8 +7,8 @@ export class UrlParamBuilder {
   protected readonly paramSeparator: string = '&';
 
   /**
-   * Default constructor. Outside of url trimming and non empty check,
-   * no other validation check is performed on the input string.
+   * Default constructor. Outside of non empty check,
+   * no other validation is performed on the input string.
    *
    * @param url the url.
    */
@@ -18,8 +18,8 @@ export class UrlParamBuilder {
     // to avoid checking elements of the url that have been already validated.
     // WARNING: creating new instances of UrlBuilder and UrlParamBuilder directly
     // from the constructor will not throw any error if the url contains whitespaces!
-    this.url = url.trim();
-    if (url === '') {
+    this.url = url;
+    if (this.url === '') {
       throw new Error('url can not be empty string');
     }
   }
