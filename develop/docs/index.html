@@ -84,7 +84,23 @@
 				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
 					<h2>Installing</h2>
 				</a>
-				<pre><code><span style="color: #001080">$</span><span style="color: #000000"> </span><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">http</span><span style="color: #000000">-</span><span style="color: #001080">url</span><span style="color: #000000">-</span><span style="color: #001080">builder</span>
+				<p>Using npm:</p>
+				<pre><code class="language-bash"><span style="color: #000000">npm install http-url-builder</span>
+</code></pre>
+				<p>Using bower:</p>
+				<pre><code class="language-bash"><span style="color: #000000">bower install http-url-builder</span>
+</code></pre>
+				<p>Using yarn:</p>
+				<pre><code class="language-bash"><span style="color: #000000">yarn add http-url-builder</span>
+</code></pre>
+				<p>To install the latest version with security updates applied use <code>@dev</code> tag when installing:</p>
+				<pre><code class="language-bash"><span style="color: #000000">npm install http-url-builder@dev</span>
+</code></pre>
+				<p>Using bower:</p>
+				<pre><code class="language-bash"><span style="color: #000000">bower install http-url-builder@dev</span>
+</code></pre>
+				<p>Using yarn:</p>
+				<pre><code class="language-bash"><span style="color: #000000">yarn add http-url-builder@dev</span>
 </code></pre>
 				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
 					<h2>Examples</h2>
@@ -101,13 +117,26 @@
 				<pre><code class="language-js"><span style="color: #008000">// &#039;false&#039; uses &#039;http&#039; instead of &#039;https&#039;</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #008000">/*, false*/</span><span style="color: #000000">)</span>
 <span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;foo&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">addPathVariable</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;John Doe&#039;</span><span style="color: #000000">)</span>
 <span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;bar&#039;</span><span style="color: #000000">)</span>
 <span style="color: #000000">    .</span><span style="color: #795E26">addQueryParam</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;baz&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;qux&#039;</span><span style="color: #000000">)</span>
 <span style="color: #000000">    .</span><span style="color: #795E26">addQueryParam</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;test&#039;</span><span style="color: #000000">, </span><span style="color: #098658">123</span><span style="color: #000000">)</span>
 <span style="color: #000000">    .</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
 
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
-<span style="color: #008000">// https://localhost:8080/foo/bar?baz=qux&amp;test=123</span>
+<span style="color: #008000">// https://localhost:8080/foo/John Doe/bar?baz=qux&amp;test=123</span>
+</code></pre>
+				<p><code>addPath()</code> does not allow spaces in the url and automatically trims the path value to prevent errors.</p>
+				<p><code>addPathVariable()</code> instead allows to insert spaces since query params do not need to follow the strict rules applied to paths. Moreover, <code>/</code> characters will be replaced with <code>%2F</code>.</p>
+				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">)</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;example&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">    </span><span style="color: #008000">// &#039;true&#039; will trim the path variable as it happens with .addPath()</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">addPathVariable</span><span style="color: #000000">(</span><span style="color: #A31515">&#039; John/Doe &#039;</span><span style="color: #008000">/*, true*/</span><span style="color: #000000">)</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;operation&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">    .</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
+<span style="color: #008000">// https://localhost:8080/example/ John%2FDoe /operation</span>
 </code></pre>
 				<p><code>addQueryParam()</code> accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">obj</span><span style="color: #000000"> = {</span>
@@ -123,7 +152,7 @@
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
 <span style="color: #008000">// https://localhost:8080/example?myObj={&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:0,&quot;qux&quot;:true}</span>
 </code></pre>
-				<p>Each <code>addPath()</code> and <code>addQueryParam()</code> operation creates a new UrlBuilder instance.
+				<p>Each <code>addPath()</code>, <code>addPathVariable()</code> and <code>addQueryParam()</code> operation creates a new UrlBuilder instance.
 				Thanks to immutability, paths can not be accidentally modified:</p>
 				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">base</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">).</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;base&#039;</span><span style="color: #000000">);</span>
 

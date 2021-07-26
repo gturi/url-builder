@@ -109,10 +109,13 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="url_builder.UrlBuilder.html#addPath" class="tsd-kind-icon">add<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="url_builder.UrlBuilder.html#addPathVariable" class="tsd-kind-icon">add<wbr>Path<wbr>Variable</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="url_builder.UrlBuilder.html#addQueryParam" class="tsd-kind-icon">add<wbr>Query<wbr>Param</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="url_builder.UrlBuilder.html#build" class="tsd-kind-icon">build</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="url_builder.UrlBuilder.html#joinToCurrentUrl" class="tsd-kind-icon">join<wbr>ToCurrent<wbr>Url</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="url_builder.UrlBuilder.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="url_builder.UrlBuilder.html#failIfStringHasWhitespaces" class="tsd-kind-icon">fail<wbr>IfString<wbr>Has<wbr>Whitespaces</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="url_builder.UrlBuilder.html#getNewUrlBuilder" class="tsd-kind-icon">get<wbr>New<wbr>Url<wbr>Builder</a></li>
 							</ul>
 						</section>
 					</div>
@@ -131,13 +134,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="url_param_builder.UrlParamBuilder.html">UrlParamBuilder</a>.<a href="url_param_builder.UrlParamBuilder.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-param-builder.ts#L15">url-param-builder.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-param-builder.ts#L15">url-param-builder.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Default constructor. Outside of url trimming and non empty check,
-									no other validation check is performed on the input string.</p>
+									<p>Default constructor. Outside of non empty check,
+									no other validation is performed on the input string.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -163,7 +166,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="url_param_builder.UrlParamBuilder.html">UrlParamBuilder</a>.<a href="url_param_builder.UrlParamBuilder.html#paramSeparator">paramSeparator</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-builder.ts#L7">url-builder.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L7">url-builder.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,7 +177,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="url_param_builder.UrlParamBuilder.html">UrlParamBuilder</a>.<a href="url_param_builder.UrlParamBuilder.html#url">url</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-param-builder.ts#L5">url-param-builder.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-param-builder.ts#L5">url-param-builder.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -191,7 +194,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-builder.ts#L37">url-builder.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L37">url-builder.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,6 +225,54 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addPathVariable" class="tsd-anchor"></a>
+					<h3>add<wbr>Path<wbr>Variable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Path<wbr>Variable<span class="tsd-signature-symbol">(</span>pathVariable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trim<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, trailingSeparator<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="url_builder.UrlBuilder.html" class="tsd-signature-type" data-tsd-kind="Class">UrlBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L61">url-builder.ts:61</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a path variable to the current url. The resulting url is obtained by appending
+										to the base one &#39;/&#39; separator followed by the specified <code>pathVariable</code>.
+									Path variables can contain spaces and any &#39;/&#39; character will be replaced with &#39;%2F&#39;.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pathVariable: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the path variable that should be appended to the current url.</p>
+									</div>
+								</li>
+								<li>
+									<h5>trim: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>whether the path variable should be trimmed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>trailingSeparator: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>if set to <code>true</code> adds a trailing &#39;/&#39; after the specified <code>pathVariable</code>.
+											This property should be used only for compatibility reasons,
+										since trailing &#39;/&#39; should be avoided when building rest APIs.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="url_builder.UrlBuilder.html" class="tsd-signature-type" data-tsd-kind="Class">UrlBuilder</a></h4>
+							<p>a new <a href="url_builder.UrlBuilder.html">UrlBuilder</a> instance.</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="addQueryParam" class="tsd-anchor"></a>
 					<h3>add<wbr>Query<wbr>Param</h3>
@@ -233,7 +284,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="url_param_builder.UrlParamBuilder.html">UrlParamBuilder</a>.<a href="url_param_builder.UrlParamBuilder.html#addQueryParam">addQueryParam</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-param-builder.ts#L37">url-param-builder.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-param-builder.ts#L37">url-param-builder.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -275,7 +326,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="url_param_builder.UrlParamBuilder.html">UrlParamBuilder</a>.<a href="url_param_builder.UrlParamBuilder.html#build">build</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-param-builder.ts#L59">url-param-builder.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-param-builder.ts#L59">url-param-builder.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,6 +336,38 @@
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 							<p>the built url.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="joinToCurrentUrl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> join<wbr>ToCurrent<wbr>Url</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">join<wbr>ToCurrent<wbr>Url<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L78">url-builder.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Joins a path to the current url using <code>/</code> as separator.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the path to join.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the concatenation of <code>this.url</code>/<code>path</code>.</p>
 						</li>
 					</ul>
 				</section>
@@ -298,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-builder.ts#L17">url-builder.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L17">url-builder.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -342,7 +425,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/d6d6319/src/url-builder.ts#L57">url-builder.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L89">url-builder.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -360,6 +443,44 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="getNewUrlBuilder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>New<wbr>Url<wbr>Builder</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>New<wbr>Url<wbr>Builder<span class="tsd-signature-symbol">(</span>newUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trailingSeparator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="url_builder.UrlBuilder.html" class="tsd-signature-type" data-tsd-kind="Class">UrlBuilder</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/FlamingTuri/url-builder/blob/af9a73e/src/url-builder.ts#L102">url-builder.ts:102</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets a new <a href="url_builder.UrlBuilder.html">UrlBuilder</a> instance.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newUrl: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the url used to initialize <a href="url_builder.UrlBuilder.html">UrlBuilder</a> constructor.</p>
+									</div>
+								</li>
+								<li>
+									<h5>trailingSeparator: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>if set to <code>true</code> adds a trailing &#39;/&#39; after the specified <code>path</code>.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="url_builder.UrlBuilder.html" class="tsd-signature-type" data-tsd-kind="Class">UrlBuilder</a></h4>
+							<p>a new <a href="url_builder.UrlBuilder.html">UrlBuilder</a> instance.</p>
 						</li>
 					</ul>
 				</section>
@@ -401,17 +522,26 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="url_builder.UrlBuilder.html#addPath" class="tsd-kind-icon">add<wbr>Path</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="url_builder.UrlBuilder.html#addPathVariable" class="tsd-kind-icon">add<wbr>Path<wbr>Variable</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="url_builder.UrlBuilder.html#addQueryParam" class="tsd-kind-icon">add<wbr>Query<wbr>Param</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="url_builder.UrlBuilder.html#build" class="tsd-kind-icon">build</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="url_builder.UrlBuilder.html#joinToCurrentUrl" class="tsd-kind-icon">join<wbr>ToCurrent<wbr>Url</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="url_builder.UrlBuilder.html#create" class="tsd-kind-icon">create</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="url_builder.UrlBuilder.html#failIfStringHasWhitespaces" class="tsd-kind-icon">fail<wbr>IfString<wbr>Has<wbr>Whitespaces</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="url_builder.UrlBuilder.html#getNewUrlBuilder" class="tsd-kind-icon">get<wbr>New<wbr>Url<wbr>Builder</a>
 							</li>
 						</ul>
 					</li>
@@ -436,6 +566,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
