@@ -1,15 +1,17 @@
 import { execSync } from 'child_process';
 
 try {
-  const oneDay = 24 * 60 * 60;
-  const lastCommitTimestamp = parseInt(execSync('git log -1 --format=%cd --date=unix').toString(), 10);
-  const currentTimestamp = Math.floor(new Date().getTime() / 1000);
+  // folders or files (separated by spaces) to look for changes within 24 
+  const arg = process.argv[2] || '';
+  const folders = arg === '' ? arg : `-- ${arg}`;
+  const command = `git log --pretty=format: --name-only --since="1 days ago" ${folders}`;
+  const changedFiles = execSync(command).toString();
 
-  if ((lastCommitTimestamp + oneDay) > currentTimestamp) {
-    // a commit was made in the last 24 hours, create a new release
+  if (changedFiles.split('\n').filter(e => e !== '').length > 0) {
+    // a commit was made within the last 24 hours
     console.log('run');
   } else {
-    // no commit was made in the last 24 hours, skip new release creation
+    // no commit was made within the last 24 hours
     console.log('skip');
   }
 } catch (e) {

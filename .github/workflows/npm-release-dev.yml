@@ -19,7 +19,7 @@ jobs:
       - id: status
         # using a run statement for each command does not work
         run: |
-          OUT=`node script/check-for-changes-within-24h.mjs`
+          OUT=`node script/check-for-changes-within-24h.mjs "src package.json package-lock.json"`
           echo "$OUT build step"
           echo "::set-output name=value::$OUT"
   build:
