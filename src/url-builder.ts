@@ -49,13 +49,14 @@ export class UrlBuilder extends UrlParamBuilder {
   /**
    * Adds a path variable to the current url. The resulting url is obtained by appending
    * to the base one '/' separator followed by the specified `pathVariable`.
-   * Path variables can contain spaces and any '/' character will be replaced with '%2F'. 
+   * Path variables can contain spaces and any '/' character will be replaced with '%2F'.
    *
    * @param pathVariable the path variable that should be appended to the current url.
    * @param trim whether the path variable should be trimmed.
-   * @param trailingSeparator if set to `true` adds a trailing '/' after the specified `pathVariable`.
-   *                          This property should be used only for compatibility reasons,
-   *                          since trailing '/' should be avoided when building rest APIs.
+   * @param trailingSeparator if set to `true` adds a trailing '/' after the specified
+   *                          `pathVariable`. This property should be used only for
+   *                          compatibility reasons, since trailing '/' should be
+   *                          avoided when building rest APIs.
    * @returns a new {@link UrlBuilder} instance.
    */
   addPathVariable(pathVariable: string, trim = false, trailingSeparator = false): UrlBuilder {
