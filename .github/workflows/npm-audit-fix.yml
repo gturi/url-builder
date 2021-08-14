@@ -32,7 +32,6 @@ jobs:
           # unfortunately this changes the pull request author to the repo owner
           token: ${{ secrets.URL_BUILDER_GITHUB_TOKEN }}
   npm-audit-fix-force:
-    needs: npm-audit-fix
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

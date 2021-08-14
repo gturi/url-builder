@@ -13,31 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.actor }}
-  automerge-dependabot:
+  automerge:
     needs: log-github-actor
-    name: Merge dependabot
-    if: github.actor == 'dependabot[bot]'
+    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'FlamingTuri' }}
     runs-on: ubuntu-latest
     steps:
-      - name: automerge dependabot
-        uses: "pascalgn/automerge-action@v0.14.2"
+      - uses: "pascalgn/automerge-action@v0.14.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: ""
+          MERGE_LABELS: "dependencies"
           MERGE_COMMIT_MESSAGE: pull-request-title
           MERGE_DELETE_BRANCH: true
           MERGE_METHOD: "rebase"
-  automerge-npm-audit-fix:
-    needs: log-github-actor
-    name: Merge npm audit fix
-    if: github.actor == 'FlamingTuri'
-    runs-on: ubuntu-latest
-    steps:
-      - name: automerge npm audit fix
-        uses: "pascalgn/automerge-action@v0.14.2"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: ""
-          MERGE_COMMIT_MESSAGE: pull-request-title
-          MERGE_DELETE_BRANCH: true
-          MERGE_METHOD: "rebase"
+          MERGE_RETRY_SLEEP: "60000"

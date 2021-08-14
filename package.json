@@ -1,7 +1,7 @@
 {
   "name": "http-url-builder",
   "author": "Giacomo Venturini",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Utility to help building http urls",
   "keywords": [
     "url",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",
-    "@types/mocha": "^8.0.4",
+    "@types/mocha": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "chai": "^4.2.0",
