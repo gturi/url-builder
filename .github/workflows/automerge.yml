@@ -4,10 +4,10 @@ on:
   pull_request:
     branches:
       - develop
-  check_suite:
+  workflow_run:
+    workflows: ["build"]
     types:
       - completed
-  status: {}
 
 jobs:
   log-github-actor:
