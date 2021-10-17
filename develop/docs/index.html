@@ -1,215 +1,76 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>http-url-builder</title>
-	<meta name="description" content="Documentation for http-url-builder">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">http-url-builder</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>http-url-builder</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#urlbuilder" id="urlbuilder" style="color: inherit; text-decoration: none;">
-					<h1>UrlBuilder</h1>
-				</a>
-				<table>
-					<thead>
-						<tr>
-							<th>branch</th>
-							<th>build</th>
-							<th>coverage</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>main</td>
-							<td><a href="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml"><img src="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml/badge.svg" alt="lint-and-test"></a></td>
-							<td><a href="https://coveralls.io/github/FlamingTuri/url-builder?branch=main"><img src="https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=main" alt="Coverage Status"></a></td>
-						</tr>
-						<tr>
-							<td>develop</td>
-							<td><a href="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml"><img src="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml/badge.svg?branch=develop" alt="lint-and-test"></a></td>
-							<td><a href="https://coveralls.io/github/FlamingTuri/url-builder?branch=develop"><img src="https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=develop" alt="Coverage Status"></a></td>
-						</tr>
-				</tbody></table>
-				<p>Utility to help building http urls for your API.</p>
-				<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
-					<h2>Installing</h2>
-				</a>
-				<p>Using npm:</p>
-				<pre><code class="language-bash"><span style="color: #000000">npm install http-url-builder</span>
-</code></pre>
-				<p>Using bower:</p>
-				<pre><code class="language-bash"><span style="color: #000000">bower install http-url-builder</span>
-</code></pre>
-				<p>Using yarn:</p>
-				<pre><code class="language-bash"><span style="color: #000000">yarn add http-url-builder</span>
-</code></pre>
-				<p>To install the latest version with security updates applied use <code>@dev</code> tag when installing:</p>
-				<pre><code class="language-bash"><span style="color: #000000">npm install http-url-builder@dev</span>
-</code></pre>
-				<p>Using bower:</p>
-				<pre><code class="language-bash"><span style="color: #000000">bower install http-url-builder@dev</span>
-</code></pre>
-				<p>Using yarn:</p>
-				<pre><code class="language-bash"><span style="color: #000000">yarn add http-url-builder@dev</span>
-</code></pre>
-				<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
-					<h2>Examples</h2>
-				</a>
-				<p>Basic setup:</p>
-				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http-url-builder&#039;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>http-url-builder</title><meta name="description" content="Documentation for http-url-builder"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">http-url-builder</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>http-url-builder</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#urlbuilder" id="urlbuilder" style="color: inherit; text-decoration: none;">
+  <h1>UrlBuilder</h1>
+</a>
+<table>
+<thead>
+<tr>
+<th>branch</th>
+<th>build</th>
+<th>coverage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>main</td>
+<td><a href="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml"><img src="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml/badge.svg" alt="lint-and-test"></a></td>
+<td><a href="https://coveralls.io/github/FlamingTuri/url-builder?branch=main"><img src="https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=main" alt="Coverage Status"></a></td>
+</tr>
+<tr>
+<td>develop</td>
+<td><a href="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml"><img src="https://github.com/FlamingTuri/url-builder/actions/workflows/lint-and-test.yml/badge.svg?branch=develop" alt="lint-and-test"></a></td>
+<td><a href="https://coveralls.io/github/FlamingTuri/url-builder?branch=develop"><img src="https://coveralls.io/repos/github/FlamingTuri/url-builder/badge.svg?branch=develop" alt="Coverage Status"></a></td>
+</tr>
+</tbody></table>
+<p>Utility to help building http urls for your API.</p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">).</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
-<span style="color: #008000">// https://localhost:8080</span>
+<a href="#installing" id="installing" style="color: inherit; text-decoration: none;">
+  <h2>Installing</h2>
+</a>
+<p>Using npm:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install http-url-builder</span>
 </code></pre>
-				<p>Build an url:</p>
-				<pre><code class="language-js"><span style="color: #008000">// &#039;false&#039; uses &#039;http&#039; instead of &#039;https&#039;</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #008000">/*, false*/</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;foo&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPathVariable</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;John Doe&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;bar&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addQueryParam</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;baz&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;qux&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addQueryParam</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;test&#039;</span><span style="color: #000000">, </span><span style="color: #098658">123</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
-<span style="color: #008000">// https://localhost:8080/foo/John Doe/bar?baz=qux&amp;test=123</span>
+<p>Using bower:</p>
+<pre><code class="language-bash"><span class="hl-0">bower install http-url-builder</span>
 </code></pre>
-				<p><code>addPath()</code> does not allow spaces in the url and automatically trims the path value to prevent errors.</p>
-				<p><code>addPathVariable()</code> instead allows to insert spaces since query params do not need to follow the strict rules applied to paths. Moreover, <code>/</code> characters will be replaced with <code>%2F</code>.</p>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;example&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    </span><span style="color: #008000">// &#039;true&#039; will trim the path variable as it happens with .addPath()</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPathVariable</span><span style="color: #000000">(</span><span style="color: #A31515">&#039; John/Doe &#039;</span><span style="color: #008000">/*, true*/</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;operation&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
-<span style="color: #008000">// https://localhost:8080/example/ John%2FDoe /operation</span>
+<p>Using yarn:</p>
+<pre><code class="language-bash"><span class="hl-0">yarn add http-url-builder</span>
 </code></pre>
-				<p><code>addQueryParam()</code> accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.</p>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">obj</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">    </span><span style="color: #001080">foo:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;bar&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">baz:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">qux:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">,</span>
-<span style="color: #000000">};</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;example&#039;</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">addQueryParam</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;myObj&#039;</span><span style="color: #000000">, </span><span style="color: #001080">obj</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">build</span><span style="color: #000000">();</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">);</span>
-<span style="color: #008000">// https://localhost:8080/example?myObj={&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:0,&quot;qux&quot;:true}</span>
+<p>To install the latest version with security updates applied use <code>@dev</code> tag when installing:</p>
+<pre><code class="language-bash"><span class="hl-0">npm install http-url-builder@dev</span>
 </code></pre>
-				<p>Each <code>addPath()</code>, <code>addPathVariable()</code> and <code>addQueryParam()</code> operation creates a new UrlBuilder instance.
-				Thanks to immutability, paths can not be accidentally modified:</p>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">base</span><span style="color: #000000"> = </span><span style="color: #001080">UrlBuilder</span><span style="color: #000000">.</span><span style="color: #795E26">create</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;localhost&#039;</span><span style="color: #000000">, </span><span style="color: #098658">8080</span><span style="color: #000000">).</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;base&#039;</span><span style="color: #000000">);</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fooUrl</span><span style="color: #000000"> = </span><span style="color: #001080">base</span><span style="color: #000000">.</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;foo&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">barUrl</span><span style="color: #000000"> = </span><span style="color: #001080">base</span><span style="color: #000000">.</span><span style="color: #795E26">addPath</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;bar&#039;</span><span style="color: #000000">);</span>
-
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">base</span><span style="color: #000000">.</span><span style="color: #795E26">build</span><span style="color: #000000">());   </span><span style="color: #008000">// https://localhost:8080/base</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">fooUrl</span><span style="color: #000000">.</span><span style="color: #795E26">build</span><span style="color: #000000">()); </span><span style="color: #008000">// https://localhost:8080/base/foo</span>
-<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">barUrl</span><span style="color: #000000">.</span><span style="color: #795E26">build</span><span style="color: #000000">()); </span><span style="color: #008000">// https://localhost:8080/base/bar</span>
+<p>Using bower:</p>
+<pre><code class="language-bash"><span class="hl-0">bower install http-url-builder@dev</span>
 </code></pre>
-				<p>If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:</p>
-				<pre><code class="language-js"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">url</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">UrlBuilder</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;https://localhost:8080/my/path&quot;</span><span style="color: #000000">);</span>
+<p>Using yarn:</p>
+<pre><code class="language-bash"><span class="hl-0">yarn add http-url-builder@dev</span>
 </code></pre>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h1>License</h1>
-				</a>
-				<p><a href="LICENSE">MIT</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Modules</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/url_builder.html">url-<wbr>builder</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/url_param_builder.html">url-<wbr>param-<wbr>builder</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#examples" id="examples" style="color: inherit; text-decoration: none;">
+  <h2>Examples</h2>
+</a>
+<p>Basic setup:</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">UrlBuilder</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;http-url-builder&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">url</span><span class="hl-0"> = </span><span class="hl-2">UrlBuilder</span><span class="hl-0">.</span><span class="hl-6">create</span><span class="hl-0">(</span><span class="hl-3">&#39;localhost&#39;</span><span class="hl-0">, </span><span class="hl-7">8080</span><span class="hl-0">).</span><span class="hl-6">build</span><span class="hl-0">();</span><br/><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">url</span><span class="hl-0">);</span><br/><span class="hl-8">// https://localhost:8080</span>
+</code></pre>
+<p>Build an url:</p>
+<pre><code class="language-js"><span class="hl-8">// &#39;false&#39; uses &#39;http&#39; instead of &#39;https&#39;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">url</span><span class="hl-0"> = </span><span class="hl-2">UrlBuilder</span><span class="hl-0">.</span><span class="hl-6">create</span><span class="hl-0">(</span><span class="hl-3">&#39;localhost&#39;</span><span class="hl-0">, </span><span class="hl-7">8080</span><span class="hl-8">/*, false*/</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;foo&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPathVariable</span><span class="hl-0">(</span><span class="hl-3">&#39;John Doe&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;bar&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addQueryParam</span><span class="hl-0">(</span><span class="hl-3">&#39;baz&#39;</span><span class="hl-0">, </span><span class="hl-3">&#39;qux&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addQueryParam</span><span class="hl-0">(</span><span class="hl-3">&#39;test&#39;</span><span class="hl-0">, </span><span class="hl-7">123</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">build</span><span class="hl-0">();</span><br/><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">url</span><span class="hl-0">);</span><br/><span class="hl-8">// https://localhost:8080/foo/John Doe/bar?baz=qux&amp;test=123</span>
+</code></pre>
+<p><code>addPath()</code> does not allow spaces in the url and automatically trims the path value to prevent errors.</p>
+<p><code>addPathVariable()</code> instead allows to insert spaces since query params do not need to follow the strict rules applied to paths. Moreover, <code>/</code> characters will be replaced with <code>%2F</code>.</p>
+<pre><code class="language-js"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">url</span><span class="hl-0"> = </span><span class="hl-2">UrlBuilder</span><span class="hl-0">.</span><span class="hl-6">create</span><span class="hl-0">(</span><span class="hl-3">&#39;localhost&#39;</span><span class="hl-0">, </span><span class="hl-7">8080</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;example&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    </span><span class="hl-8">// &#39;true&#39; will trim the path variable as it happens with .addPath()</span><br/><span class="hl-0">    .</span><span class="hl-6">addPathVariable</span><span class="hl-0">(</span><span class="hl-3">&#39; John/Doe &#39;</span><span class="hl-8">/*, true*/</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;operation&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">build</span><span class="hl-0">();</span><br/><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">url</span><span class="hl-0">);</span><br/><span class="hl-8">// https://localhost:8080/example/ John%2FDoe /operation</span>
+</code></pre>
+<p><code>addQueryParam()</code> accepts strings, numbers, booleans and objects. Objects will be converted to their JSON representation to create the url.</p>
+<pre><code class="language-js"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">obj</span><span class="hl-0"> = {</span><br/><span class="hl-0">    </span><span class="hl-2">foo:</span><span class="hl-0"> </span><span class="hl-3">&#39;bar&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">baz:</span><span class="hl-0"> </span><span class="hl-7">0</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">qux:</span><span class="hl-0"> </span><span class="hl-4">true</span><span class="hl-0">,</span><br/><span class="hl-0">};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">url</span><span class="hl-0"> = </span><span class="hl-2">UrlBuilder</span><span class="hl-0">.</span><span class="hl-6">create</span><span class="hl-0">(</span><span class="hl-3">&#39;localhost&#39;</span><span class="hl-0">, </span><span class="hl-7">8080</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;example&#39;</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">addQueryParam</span><span class="hl-0">(</span><span class="hl-3">&#39;myObj&#39;</span><span class="hl-0">, </span><span class="hl-2">obj</span><span class="hl-0">)</span><br/><span class="hl-0">    .</span><span class="hl-6">build</span><span class="hl-0">();</span><br/><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">url</span><span class="hl-0">);</span><br/><span class="hl-8">// https://localhost:8080/example?myObj={&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:0,&quot;qux&quot;:true}</span>
+</code></pre>
+<p>Each <code>addPath()</code>, <code>addPathVariable()</code> and <code>addQueryParam()</code> operation creates a new UrlBuilder instance.
+Thanks to immutability, paths can not be accidentally modified:</p>
+<pre><code class="language-js"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">base</span><span class="hl-0"> = </span><span class="hl-2">UrlBuilder</span><span class="hl-0">.</span><span class="hl-6">create</span><span class="hl-0">(</span><span class="hl-3">&#39;localhost&#39;</span><span class="hl-0">, </span><span class="hl-7">8080</span><span class="hl-0">).</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;base&#39;</span><span class="hl-0">);</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">fooUrl</span><span class="hl-0"> = </span><span class="hl-2">base</span><span class="hl-0">.</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;foo&#39;</span><span class="hl-0">);</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">barUrl</span><span class="hl-0"> = </span><span class="hl-2">base</span><span class="hl-0">.</span><span class="hl-6">addPath</span><span class="hl-0">(</span><span class="hl-3">&#39;bar&#39;</span><span class="hl-0">);</span><br/><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">base</span><span class="hl-0">.</span><span class="hl-6">build</span><span class="hl-0">());   </span><span class="hl-8">// https://localhost:8080/base</span><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">fooUrl</span><span class="hl-0">.</span><span class="hl-6">build</span><span class="hl-0">()); </span><span class="hl-8">// https://localhost:8080/base/foo</span><br/><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">barUrl</span><span class="hl-0">.</span><span class="hl-6">build</span><span class="hl-0">()); </span><span class="hl-8">// https://localhost:8080/base/bar</span>
+</code></pre>
+<p>If you already have an url, you can convert it to an UrlBuilder instance by using its constructor:</p>
+<pre><code class="language-js"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">url</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">UrlBuilder</span><span class="hl-0">(</span><span class="hl-3">&quot;https://localhost:8080/my/path&quot;</span><span class="hl-0">);</span>
+</code></pre>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h1>License</h1>
+</a>
+<p><a href="LICENSE">MIT</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/UrlBuilder.html" class="tsd-kind-icon">Url<wbr/>Builder</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
