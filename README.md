@@ -21,11 +21,18 @@ npm install http-url-builder@dev
 
 ## Examples
 
+Importing the library:
+
+```js
+// old CommonJS syntax
+const UrlBuilder = require('http-url-builder').UrlBuilder;
+// new ES6 syntax
+import { UrlBuilder } from 'http-url-builder';
+```
+
 Basic setup:
 
 ```js
-import { UrlBuilder } from 'http-url-builder';
-
 const url = UrlBuilder.create('localhost', 8080).build();
 
 console.log(url);
